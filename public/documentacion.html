@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+
+
+
+
+    <title>Scripts MIS</title>
+</head>
+<link rel="stylesheet" href="css/index.css">
+
+
+<body>
+
+
+    <form class="p-4">
+        <div class="form-group">
+            <span>Se ha validado su solicitud para <input id="solicitud" type="text" >, se informa
+                que se ha realizado
+                las siguientes actividades para dar solución a su requerimiento: </span>
+            <br>
+
+            <input type="text" id="sol1" placeholder="Solución">
+            <br>
+            <input type="text" id="sol2" placeholder="Solución">
+            <br>
+            <input type="text" id="sol3" placeholder="Solución">
+            <br>
+            <input type="text" id="sol4" placeholder="Solución">
+            <br>
+            <input type="text" id="sol5" placeholder="Solución">
+            <hr>
+            <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que
+                queda operativo.
+            </span>
+            <br>
+           
+        <button class="btn btn-primary" id="generarSolucion" type="submit" class="btn btn-success">Generar
+            Script</button>
+
+    </form>
+    <script>
+
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', e => {
+            const solicitud = document.querySelector('#solicitud').value;
+            const solucion = document.querySelector('#sol1').value;
+            const solucion2 = document.querySelector('#sol2').value;
+            const solucion3 = document.querySelector('#sol3').value;
+            const solucion4 = document.querySelector('#sol4').value;
+            const solucion5 = document.querySelector('#sol5').value;
+            const solucionFinal = `<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    
+
+    <title>Scripts MIS</title>
+</head>
+<link rel="stylesheet" href="css/index.css">
+
+
+<body>
+    
+    <h2>Solución Génerica de Requerimientos</h2>
+    
+    <span>Se ha validado su solicitud para <strong>${solicitud}</strong>, se informa que se ha realizado
+                las siguientes actividades para dar solución a su requerimiento: </span>
+                <br>    
+                <br>
+                <p>${solucion}</p>
+                <br>
+                <p>${solucion2}</p>
+                <br>
+                <p>${solucion3}</p>
+                <br>
+                <p>${solucion4}</p>
+                <br>
+                <p>${solucion5}</p>
+    <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que
+                queda operativo.
+    </span>
+    
+
+</body>
+
+</html>
+            `
+
+            //renderizar la solucion
+            document.querySelector('form').innerHTML = solucionFinal;
+            e.preventDefault();
+
+        })
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
