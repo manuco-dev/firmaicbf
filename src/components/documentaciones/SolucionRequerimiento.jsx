@@ -118,25 +118,33 @@ const SolucionRequerimiento = () => {
         toast.current.show({ severity: 'info', summary: 'Copiado', detail: 'Texto de la solución copiado al portapapeles', life: 2000 });
     };
 
+    const handleClear = () => {
+        setSolicitud('');
+        setTicket('');
+        setSoluciones(['', '', '', '', '']);
+        setGeneratedHtml('');
+        toast.current.show({ severity: 'info', summary: 'Campos Limpiados', detail: 'El formulario se ha reiniciado', life: 2000 });
+    };
+
     return (
         <div className="container mt-5">
             <Toast ref={toast} />
             <Card title="Generador de Solución de Requerimientos">
                 <form onSubmit={handleSubmit}>
                     <div className="p-fluid">
-                        <div className="p-field mb-3">
-                            <label htmlFor="ticket" className="form-label">Número de Ticket</label>
-                            <InputText id="ticket" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="Ej. 12345" required />
+                        <div className="p-field mb-2">
+                            <label htmlFor="ticket" className="form-label text-sm">Número de Ticket</label>
+                            <InputText id="ticket" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="Ej. 12345" required className="p-inputtext-sm" />
                         </div>
-                        <div className="p-field mb-3">
-                            <label htmlFor="solicitud" className="form-label">Solicitud</label>
-                            <span>Se ha validado su solicitud para: </span>
+                        <div className="p-field mb-2">
+                            <label htmlFor="solicitud" className="form-label text-sm">Solicitud</label>
+                            <span className="text-xs block mb-1">Se ha validado su solicitud para: </span>
                             <div className="p-inputgroup">
-                                <InputText id="solicitud" value={solicitud} onChange={(e) => setSolicitud(e.target.value)} required />
+                                <InputText id="solicitud" value={solicitud} onChange={(e) => setSolicitud(e.target.value)} required className="p-inputtext-sm" />
                                 <Button
                                     type="button"
                                     icon={loadingSuggestAI ? "pi pi-spin pi-spinner" : "pi pi-android"}
-                                    className="p-button-info"
+                                    className="p-button-info p-button-sm"
                                     onClick={suggestWithAI}
                                     tooltip="Sugerir pasos con IA"
                                     tooltipOptions={{ position: 'top' }}
@@ -145,19 +153,20 @@ const SolucionRequerimiento = () => {
                             </div>
                         </div>
 
-                        <div className="mb-3">
-                            <label className="form-label">Actividades Realizadas:</label>
+                        <div className="mb-2">
+                            <label className="form-label text-sm">Actividades Realizadas:</label>
                             {soluciones.map((sol, index) => (
-                                <div key={index} className="mb-2 p-inputgroup">
+                                <div key={index} className="mb-1 p-inputgroup">
                                     <InputText
                                         value={sol}
                                         onChange={(e) => handleSolucionChange(index, e.target.value)}
                                         placeholder={`Solución ${index + 1}`}
+                                        className="p-inputtext-sm"
                                     />
                                     <Button
                                         type="button"
                                         icon={loadingAI === index ? "pi pi-spin pi-spinner" : "pi pi-bolt"}
-                                        className="p-button-warning"
+                                        className="p-button-warning p-button-sm"
                                         onClick={() => improveWithAI(index)}
                                         tooltip="Mejorar redacción con IA"
                                         tooltipOptions={{ position: 'top' }}
@@ -167,7 +176,16 @@ const SolucionRequerimiento = () => {
                             ))}
                         </div>
 
-                        <Button label="Generar Script y Guardar" icon="pi pi-save" type="submit" />
+                        <div className="flex gap-2 flex-column md:flex-row">
+                            <Button label="Generar Script y Guardar" icon="pi pi-save" type="submit" className="w-full md:w-auto" />
+                            <Button
+                                label="Limpiar Campos"
+                                icon="pi pi-trash"
+                                type="button"
+                                className="p-button-danger p-button-outlined w-full md:w-auto"
+                                onClick={handleClear}
+                            />
+                        </div>
                     </div>
                 </form>
             </Card>

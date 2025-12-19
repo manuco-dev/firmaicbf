@@ -26,104 +26,70 @@
 }
 
 form {
-  margin: 20px;
-  max-width: 600px; /* Limita el ancho del formulario */
-  margin: 0 auto; /* Centra el formulario */
+  margin: 10px auto;
+  /* Reduced margin */
+  max-width: 700px;
+  /* Slightly wider to use screen space */
 }
 
-input, select {
-  width: 100%; /* Asegura que todos los inputs y selects ocupen el mismo ancho */
-  padding: 10px; /* Ajusta el padding */
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  /* Reduced from 10px */
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 10px; /* Tamaño de fuente consistente */
-  box-sizing: border-box; /* Asegura que el padding no altere el ancho */
-  margin-bottom: 20px; /* Aumentar el espacio inferior entre los campos */
+  font-size: 14px;
+  /* Default readable size, 10px was too small */
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  /* Reduced from 20px */
 }
 
 select {
-  -webkit-appearance: none; /* Remueve el estilo por defecto en navegadores WebKit */
-  -moz-appearance: none; /* Remueve el estilo por defecto en Firefox */
-  appearance: none; /* Remueve el estilo por defecto general */
-  background-color: white; /* Fondo blanco */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
 }
 
 /* Firma.css */
 .form-group {
-  margin-bottom: 20px; /* Aumentar el espacio entre grupos de formulario */
+  margin-bottom: 15px;
+  /* Reduced from 20px */
   width: 100%;
 }
 
 .firma p {
-  margin: 5px 0;
-}
-
-.nombre {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}
-
-.detalle {
-  margin-bottom: 3px;
-}
-
-.clasificacion-info {
-  font-size: 11px;
+  margin: 3px 0;
+  /* Reduced from 5px */
 }
 
 .btn {
-  padding: 8px 15px; /* Ajusta el padding para que el botón sea más pequeño */
+  padding: 8px 15px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%; /* Asegura que el botón ocupe el 50% del ancho del contenedor */
-  font-size: 0.9em; /* Tamaño de fuente más pequeño */
-}
-
-.firma-logo {
-  width: 150px;
-  margin-right: 15px;
-}
-
-.firma-info {
-  line-height: 1;
-  font-size: 16px;
-}
-
-.PiePag {
-  text-align: center;
-  padding: 10px;
-  background-color: #f1f1f1;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-family: 'Nunito Sans', sans-serif;
-}
-
-.PiePag p {
-  margin: 0;
-  font-size: 14px;
-  color: #000;
-}
-
-.copy-confirmation {
-  margin-top: 10px;
-  color: green;
-  font-weight: bold;
+  width: auto;
+  /* Not 50%, letting it fit content */
+  min-width: 120px;
+  font-size: 0.9em;
 }
 
 .button-container {
   margin-top: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  /* Default row */
+  justify-content: center;
+  gap: 10px;
 }
 
 .button-container button {
-  margin-bottom: 10px;
-  width: 50%; /* Asegura que los botones también ocupen el 50% del ancho disponible */
+  margin-bottom: 0;
+  width: auto;
 }
 
 .container-copy {
@@ -136,16 +102,49 @@ select {
 }
 
 /* Estilos responsivos */
-@media (max-width: 600px) {
+/* Estilos responsivos */
+@media (max-width: 768px) {
   .btn {
-    width: 100%; /* Botones ocuparán todo el ancho en pantallas pequeñas */
+    width: 100%;
+    /* Botones ocuparán todo el ancho en pantallas pequeñas */
   }
 
-  .firma-container {
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  .firma-container,
+  form {
+    width: 95%;
+    /* Ocupa casi todo el ancho */
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 0 10px;
   }
 
   .App {
-    padding: 5%; /* Reduce el padding en pantallas más pequeñas */
+    padding: 5%;
+    /* Reduce el padding en pantallas más pequeñas */
+    padding-bottom: 80px;
+    /* Espacio para que el footer no tape contenido */
+  }
+
+  .firma {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+  }
+
+  .firma-logo {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .PiePag {
+    position: relative;
+    /* Deja de ser fijo en pantallas pequeñas para no estorbar */
+    margin-top: 20px;
+  }
+
+  /* Ajuste para tablas o contenido ancho */
+  .container {
+    overflow-x: auto;
   }
 }

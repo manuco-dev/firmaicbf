@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
-import './FeedBack.css'; // Asegúrate de crear este archivo CSS para los estilos
-import clienteAxios from '../../../config/axios';
+import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { Button } from 'primereact/button';
+import { Card } from 'primereact/card';
+
+import './FeedBack.css';
 
 const FeedBack = () => {
 
@@ -30,71 +35,84 @@ const FeedBack = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!recaptchaToken) {
-            Swal.fire('Please complete the reCAPTCHA');
+            Swal.fire('Por favor completa el reCAPTCHA');
             return;
         }
+
         try {
-            await clienteAxios.post('/api/comments/new', formData );
-            Swal.fire('Hemos recibido tu comentario satisfactoriamente');
-            navigate('/')
+            const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+            await axios.post(`${backendUrl}/api/comments`, formData);
+
+            Swal.fire({
+                icon: 'success',
+                title: '¡Gracias!',
+                text: 'Hemos recibido tu comentario satisfactoriamente'
+            });
+            navigate('/');
         } catch (error) {
-            console.error('Error al guardar los datos');
+            console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Hubo un problema al guardar tu comentario'
+            });
         }
     };
 
     return (
-        <div className="feedback-container">
-            <h2>Feedback</h2>
-            <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
-                <input type="hidden" name="form-name" value="contact" />
-                <div className="form-group">
-                    <label>
-                        Name:
-                        <input 
-                            type="text" 
-                            name="name" 
-                            placeholder='Dejanos saber tu nombre'
+        <div className="container mt-5" style={{ maxWidth: '600px' }}>
+            <Card title="Envíanos tus Comentarios">
+                <form onSubmit={handleSubmit} className="p-fluid">
+                    <div className="field mb-3">
+                        <label htmlFor="name" className="block text-sm font-bold mb-1">Nombre</label>
+                        <InputText
+                            id="name"
+                            name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            required 
+                            placeholder="Déjanos saber tu nombre"
+                            required
+                            className="p-inputtext-sm"
                         />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Email:
-                        <input 
-                            type="email" 
-                            name="email" 
-                            placeholder='Correo Electronico'
+                    </div>
+                    <div className="field mb-3">
+                        <label htmlFor="email" className="block text-sm font-bold mb-1">Email</label>
+                        <InputText
+                            id="email"
+                            name="email"
+                            type="email"
                             value={formData.email}
                             onChange={handleChange}
-                            required 
+                            placeholder="Correo Electrónico"
+                            required
+                            className="p-inputtext-sm"
                         />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Comment:
-                        <textarea 
-                            name="comentario" 
-                            placeholder='Comentario'
-                            value={formData.comentario}
+                    </div>
+                    <div className="field mb-3">
+                        <label htmlFor="comment" className="block text-sm font-bold mb-1">Comentario</label>
+                        <InputTextarea
+                            id="comment"
+                            name="comment"
+                            value={formData.comment}
                             onChange={handleChange}
-                            required 
+                            rows={5}
+                            placeholder="Escribe tu comentario aquí..."
+                            required
+                            autoResize
+                            className="text-sm"
                         />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <ReCAPTCHA
-                        sitekey="6LcPaB0qAAAAALP1SigJEGwRGMT14aoK7OJGfiYn"
-                        onChange={handleRecaptchaChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <button type="submit">Send</button>
-                </div>
-            </form>
+                    </div>
+
+                    <div className="field mb-3 flex justify-content-center">
+                        <ReCAPTCHA
+                            sitekey="6LcPaB0qAAAAALP1SigJEGwRGMT14aoK7OJGfiYn"
+                            onChange={handleRecaptchaChange}
+                        />
+                    </div>
+
+                    <Button label="Enviar Comentario" icon="pi pi-send" type="submit" className="p-button-sm" />
+                </form>
+            </Card>
         </div>
     );
 };
