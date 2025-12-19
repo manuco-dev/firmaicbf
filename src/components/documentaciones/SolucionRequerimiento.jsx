@@ -30,7 +30,7 @@ const SolucionRequerimiento = () => {
 </head>
 <body>
     <h2>Solución Génerica de Requerimientos</h2>
-    <span>Se ha validado su solicitud para <strong>${solicitud}</strong> (Ticket: ${ticket}), se informa que se ha realizado las siguientes actividades para dar solución a su requerimiento: </span>
+    <span>Se ha validado su solicitud para <strong>${solicitud}</strong>, se informa que se ha realizado las siguientes actividades para dar solución a su requerimiento: </span>
     <br><br>
     ${soluciones.map(sol => sol ? `<p>${sol}</p><br>` : '').join('')}
     <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que queda operativo.</span>
@@ -41,7 +41,7 @@ const SolucionRequerimiento = () => {
 
     const generarTextoPlano = () => {
         const actividadesTexto = soluciones.filter(s => s.trim() !== '').map(s => `- ${s}`).join('\n');
-        return `Se ha validado su solicitud para ${solicitud} (Ticket: ${ticket}), se informa que se ha realizado las siguientes actividades para dar solución a su requerimiento:\n\n${actividadesTexto}\n\nUna vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que queda operativo.`;
+        return `Se ha validado su solicitud para ${solicitud}, se informa que se ha realizado las siguientes actividades para dar solución a su requerimiento:\n\n${actividadesTexto}\n\nUna vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que queda operativo.`;
     };
 
     const [loadingAI, setLoadingAI] = useState(null); // Index of the input being improved
