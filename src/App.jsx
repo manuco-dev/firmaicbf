@@ -36,6 +36,7 @@ import FeedBack from './components/documentaciones/Feedback';
 
 import Plantilla16 from './components/documentaciones/Plantilla16';
 import SolucionRequerimiento from './components/documentaciones/SolucionRequerimiento';
+import SolucionIncidente from './components/documentaciones/SolucionIncidente';
 import UploadToCloudinary from './components/Cloudinary';
 
 
@@ -67,6 +68,7 @@ const App = () => {
         <Route path="/plantilla16" element={< Plantilla16 />} />
         <Route path="/feedback" element={< FeedBack />} />
         <Route path="/solucion-requerimiento" element={<SolucionRequerimiento />} />
+        <Route path="/solucion-incidente" element={<SolucionIncidente />} />
         <Route path="/comprimir" element={<UploadToCloudinary />} />
       </Routes>
     </Router>

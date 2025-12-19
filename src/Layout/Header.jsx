@@ -20,15 +20,20 @@ const Header = () => {
             <Link to="/firma-corp">
               <Button variant="contained" color="primary" size="small">Firma Corporativa</Button>
             </Link>
+            <Link to="/solucion-requerimiento">
+              <Button variant="contained" color="secondary" size="small">Solución Req</Button>
+            </Link>
+            <Link to="/solucion-incidente">
+              <Button variant="contained" color="error" size="small">Solución Inc</Button>
+            </Link>
+
             <Link to="/comprimir">
               <Button variant="contained" color="primary" size="small">Comprimir Archivos</Button>
             </Link>
             <Link to="/feedback">
               <Button variant="contained" color="primary" size="small">Comentarios</Button>
             </Link>
-            <Link to="/solucion-requerimiento">
-              <Button variant="contained" color="secondary" size="small">Solución Req</Button>
-            </Link>
+
           </div>
         </div>
       </header>

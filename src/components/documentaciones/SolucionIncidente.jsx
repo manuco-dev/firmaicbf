@@ -6,8 +6,8 @@ import { Card } from 'primereact/card';
 import { Toast } from 'primereact/toast';
 import axios from 'axios';
 
-const SolucionRequerimiento = () => {
-    const [solicitud, setSolicitud] = useState('');
+const SolucionIncidente = () => {
+    const [causa, setCausa] = useState('');
     const [ticket, setTicket] = useState('');
     const [soluciones, setSoluciones] = useState(['', '', '', '', '']);
     const [generatedHtml, setGeneratedHtml] = useState('');
@@ -29,11 +29,11 @@ const SolucionRequerimiento = () => {
     <title>Scripts MIS</title>
 </head>
 <body>
-    <h2>Solución Génerica de Requerimientos</h2>
-    <span>Se ha validado su solicitud para <strong>${solicitud}</strong> (Ticket: ${ticket}), se informa que se ha realizado las siguientes actividades para dar solución a su requerimiento: </span>
+    <h2>Solución generica de incidentes</h2>
+    <span>Atendiendo a su solicitud se procedió a realizar revisión de lo reportado, se ha identificado que la causa de la falla se presenta por <strong>${causa}</strong> (Ticket: ${ticket}), para dar solución se procedió a realizar las siguientes actividades:</span>
     <br><br>
     ${soluciones.map(sol => sol ? `<p>${sol}</p><br>` : '').join('')}
-    <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que queda operativo.</span>
+    <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que queda operativo nuevamente.</span>
 </body>
 </html>`;
         return html;
@@ -41,21 +41,20 @@ const SolucionRequerimiento = () => {
 
     const generarTextoPlano = () => {
         const actividadesTexto = soluciones.filter(s => s.trim() !== '').map(s => `- ${s}`).join('\n');
-        return `Se ha validado su solicitud para ${solicitud} (Ticket: ${ticket}), se informa que se ha realizado las siguientes actividades para dar solución a su requerimiento:\n\n${actividadesTexto}\n\nUna vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciado que queda operativo.`;
+        return `Atendiendo a su solicitud se procedió a realizar revisión de lo reportado, se ha identificado que la causa de la falla se presenta por ${causa} (Ticket: ${ticket}), para dar solución se procedió a realizar las siguientes actividades:\n\n${actividadesTexto}\n\nUna vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que queda operativo nuevamente.`;
     };
 
     const [loadingAI, setLoadingAI] = useState(null); // Index of the input being improved
-
     const [loadingSuggestAI, setLoadingSuggestAI] = useState(false);
 
     const suggestWithAI = async () => {
-        if (!solicitud.trim()) return;
+        if (!causa.trim()) return;
 
         setLoadingSuggestAI(true);
         try {
             const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
             const response = await axios.post(`${backendUrl}/api/ai/suggest`, {
-                problem: solicitud
+                problem: causa
             });
 
             setSoluciones(response.data.steps);
@@ -74,7 +73,8 @@ const SolucionRequerimiento = () => {
 
         setLoadingAI(index);
         try {
-            const response = await axios.post('http://localhost:4000/api/ai/formalize', {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+            const response = await axios.post(`${backendUrl}/api/ai/formalize`, {
                 text: textToImprove
             });
 
@@ -96,19 +96,18 @@ const SolucionRequerimiento = () => {
         setGeneratedHtml(html);
 
         try {
-            // Guardar en MongoDB (Backend local) - Solo datos, SIN HTML
             const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
-            await axios.post(`${backendUrl}/api/requirements`, {
+            await axios.post(`${backendUrl}/api/incidents`, {
                 ticket,
-                solicitud,
+                causa,
                 actividades: soluciones.filter(s => s.trim() !== ''),
                 fechaCreacion: new Date()
             });
 
-            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Requerimiento guardado correctamente', life: 3000 });
+            toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Incidente guardado correctamente', life: 3000 });
         } catch (error) {
             console.error(error);
-            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo guardar el requerimiento', life: 3000 });
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'No se pudo guardar el incidente', life: 3000 });
         }
     };
 
@@ -119,7 +118,7 @@ const SolucionRequerimiento = () => {
     };
 
     const handleClear = () => {
-        setSolicitud('');
+        setCausa('');
         setTicket('');
         setSoluciones(['', '', '', '', '']);
         setGeneratedHtml('');
@@ -129,7 +128,7 @@ const SolucionRequerimiento = () => {
     return (
         <div className="container mt-5">
             <Toast ref={toast} />
-            <Card title="Generador de Solución de Requerimientos">
+            <Card title="Generador de Solución de Incidentes">
                 <form onSubmit={handleSubmit}>
                     <div className="p-fluid">
                         <div className="p-field mb-2">
@@ -137,10 +136,10 @@ const SolucionRequerimiento = () => {
                             <InputText id="ticket" value={ticket} onChange={(e) => setTicket(e.target.value)} placeholder="Ej. 12345" required className="p-inputtext-sm" />
                         </div>
                         <div className="p-field mb-2">
-                            <label htmlFor="solicitud" className="form-label text-sm">Solicitud</label>
-                            <span className="text-xs block mb-1">Se ha validado su solicitud para: </span>
+                            <label htmlFor="causa" className="form-label text-sm">Causa de la Falla</label>
+                            <span className="text-xs block mb-1">Se ha identificado que la causa de la falla se presenta por: </span>
                             <div className="p-inputgroup">
-                                <InputText id="solicitud" value={solicitud} onChange={(e) => setSolicitud(e.target.value)} required className="p-inputtext-sm" />
+                                <InputText id="causa" value={causa} onChange={(e) => setCausa(e.target.value)} required className="p-inputtext-sm" />
                                 <Button
                                     type="button"
                                     icon={loadingSuggestAI ? "pi pi-spin pi-spinner" : "pi pi-android"}
@@ -148,7 +147,7 @@ const SolucionRequerimiento = () => {
                                     onClick={suggestWithAI}
                                     tooltip="Sugerir pasos con IA"
                                     tooltipOptions={{ position: 'top' }}
-                                    disabled={!solicitud.trim() || loadingSuggestAI}
+                                    disabled={!causa.trim() || loadingSuggestAI}
                                 />
                             </div>
                         </div>
@@ -204,4 +203,4 @@ const SolucionRequerimiento = () => {
     );
 };
 
-export default SolucionRequerimiento;
+export default SolucionIncidente;
