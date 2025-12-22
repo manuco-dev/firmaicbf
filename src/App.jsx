@@ -38,6 +38,10 @@ import Plantilla16 from './components/documentaciones/Plantilla16';
 import SolucionRequerimiento from './components/documentaciones/SolucionRequerimiento';
 import SolucionIncidente from './components/documentaciones/SolucionIncidente';
 import UploadToCloudinary from './components/Cloudinary';
+import Auth from './components/auth/Auth';
+import Historial from './components/historial/Historial';
+
+import { AuthProvider } from './context/AuthContext';
 
 
 
@@ -45,33 +49,37 @@ import UploadToCloudinary from './components/Cloudinary';
 
 const App = () => {
   return (
-    <Router>
-      <Header />
-      <PiePag />
-      <Routes>
-        <Route path="/firma-corp" element={<FirmaInput />} />
-        <Route path="/plantilla1" element={< Plantilla1 />} />
-        <Route path="/plantilla2" element={< Plantilla2 />} />
-        <Route path="/plantilla3" element={< Plantilla3 />} />
-        <Route path="/plantilla4" element={< Plantilla4 />} />
-        <Route path="/plantilla5" element={< Plantilla5 />} />
-        <Route path="/plantilla6" element={< Plantilla6 />} />
-        <Route path="/plantilla7" element={< Plantilla7 />} />
-        <Route path="/plantilla8" element={< Plantilla8 />} />
-        <Route path="/plantilla9" element={< Plantilla9 />} />
-        <Route path="/plantilla10" element={< Plantilla10 />} />
-        <Route path="/plantilla11" element={< Plantilla11 />} />
-        <Route path="/plantilla12" element={< Plantilla12 />} />
-        <Route path="/plantilla13" element={< Plantilla13 />} />
-        <Route path="/plantilla14" element={< Plantilla14 />} />
-        <Route path="/plantilla15" element={< Plantilla15 />} />
-        <Route path="/plantilla16" element={< Plantilla16 />} />
-        <Route path="/feedback" element={< FeedBack />} />
-        <Route path="/solucion-requerimiento" element={<SolucionRequerimiento />} />
-        <Route path="/solucion-incidente" element={<SolucionIncidente />} />
-        <Route path="/comprimir" element={<UploadToCloudinary />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Header />
+        <PiePag />
+        <Routes>
+          <Route path="/login" element={<Auth />} />
+          <Route path="/firma-corp" element={<FirmaInput />} />
+          <Route path="/plantilla1" element={< Plantilla1 />} />
+          <Route path="/plantilla2" element={< Plantilla2 />} />
+          <Route path="/plantilla3" element={< Plantilla3 />} />
+          <Route path="/plantilla4" element={< Plantilla4 />} />
+          <Route path="/plantilla5" element={< Plantilla5 />} />
+          <Route path="/plantilla6" element={< Plantilla6 />} />
+          <Route path="/plantilla7" element={< Plantilla7 />} />
+          <Route path="/plantilla8" element={< Plantilla8 />} />
+          <Route path="/plantilla9" element={< Plantilla9 />} />
+          <Route path="/plantilla10" element={< Plantilla10 />} />
+          <Route path="/plantilla11" element={< Plantilla11 />} />
+          <Route path="/plantilla12" element={< Plantilla12 />} />
+          <Route path="/plantilla13" element={< Plantilla13 />} />
+          <Route path="/plantilla14" element={< Plantilla14 />} />
+          <Route path="/plantilla15" element={< Plantilla15 />} />
+          <Route path="/plantilla16" element={< Plantilla16 />} />
+          <Route path="/feedback" element={< FeedBack />} />
+          <Route path="/solucion-requerimiento" element={<SolucionRequerimiento />} />
+          <Route path="/solucion-incidente" element={<SolucionIncidente />} />
+          <Route path="/historial" element={<Historial />} />
+          <Route path="/comprimir" element={<UploadToCloudinary />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 

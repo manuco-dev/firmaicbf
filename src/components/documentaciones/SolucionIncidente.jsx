@@ -1,17 +1,28 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Toast } from 'primereact/toast';
 import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
 
 const SolucionIncidente = () => {
+    const navigate = useNavigate();
+    const { token, isAuthenticated } = useAuth();
     const [causa, setCausa] = useState('');
     const [ticket, setTicket] = useState('');
     const [soluciones, setSoluciones] = useState(['', '', '', '', '']);
     const [generatedHtml, setGeneratedHtml] = useState('');
     const toast = useRef(null);
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            toast.current?.show({ severity: 'warn', summary: 'Autenticación Requerida', detail: 'Debes iniciar sesión para usar esta función', life: 3000 });
+            setTimeout(() => navigate('/login'), 2000);
+        }
+    }, [isAuthenticated, navigate]);
 
     const handleSolucionChange = (index, value) => {
         const newSoluciones = [...soluciones];
@@ -102,6 +113,10 @@ const SolucionIncidente = () => {
                 causa,
                 actividades: soluciones.filter(s => s.trim() !== ''),
                 fechaCreacion: new Date()
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             });
 
             toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Incidente guardado correctamente', life: 3000 });
