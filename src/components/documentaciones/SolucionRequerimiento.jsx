@@ -17,13 +17,6 @@ const SolucionRequerimiento = () => {
     const [generatedHtml, setGeneratedHtml] = useState('');
     const toast = useRef(null);
 
-    useEffect(() => {
-        if (!isAuthenticated) {
-            toast.current?.show({ severity: 'warn', summary: 'Autenticación Requerida', detail: 'Debes iniciar sesión para usar esta función', life: 3000 });
-            setTimeout(() => navigate('/login'), 2000);
-        }
-    }, [isAuthenticated, navigate]);
-
     const handleSolucionChange = (index, value) => {
         const newSoluciones = [...soluciones];
         newSoluciones[index] = value;
@@ -144,6 +137,17 @@ const SolucionRequerimiento = () => {
     return (
         <div className="container mt-5">
             <Toast ref={toast} />
+            {!isAuthenticated && (
+                <div className="mb-3">
+                    <div className="p-message p-message-info" style={{ padding: '10px', borderRadius: '5px', backgroundColor: '#E3F2FD' }}>
+                        <span className="p-message-icon pi pi-info-circle" style={{ marginRight: '8px' }}></span>
+                        <span>
+                            💡 <strong>Modo Invitado:</strong> Puedes generar soluciones libremente.
+                            <a href="/login" style={{ marginLeft: '5px', color: '#1976D2', textDecoration: 'underline' }}>Inicia sesión</a> para guardar tu historial.
+                        </span>
+                    </div>
+                </div>
+            )}
             <Card title="Generador de Solución de Requerimientos">
                 <form onSubmit={handleSubmit}>
                     <div className="p-fluid">
