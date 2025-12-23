@@ -17,11 +17,6 @@ const Header = () => {
 
   return (
     <>
-      {/* Layout de noticias */}
-      <div className="layout-news">
-        <h5>Donaciones al Nequi: 3013730306 -- Developer Web: ING Manuel Cogollo</h5>
-      </div>
-
       <header className="barra">
         <div className="contenedor">
           <div className="contenido-barra">
