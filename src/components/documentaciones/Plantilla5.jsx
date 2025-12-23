@@ -19,24 +19,28 @@ const Plantilla5 = () => {
         }
     };
 
-    return ( 
+    return (
         <>
             <h1 className='container'>Actualización de Firma</h1>
             <div className="container" ref={contentRef}>
-                <span>Se ha validado su solicitud para Actualización de Firma, se informa
-                    que se ha realizado
-                    las siguientes actividades para dar solución a su requerimiento: </span>
+                <span>Se ha validado su solicitud relacionada con Actualización de Firma. En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
                 <br />
                 <br />
                 <p>1. Se configura y se actualiza el último modelo de la firma de correo  desde las opciones de Outlook 365 de manera correcta. </p>
                 <br />
                 <p>2. Se comprueba él buen funcionamiento de la solución dada a satisfacción.</p>
                 <br />
-               
+
                 <br />
                 <br />
-                <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que 
-                    queda operativo.</span>
+                <span>
+                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido<br /><br />
+                    Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:<br />
+                    • Canal de autoservicio https://mis.icbf.gov.co<br />
+                    • Correo: mis@icbf.gov.co<br />
+                    • MISI - Chatbot Teams<br />
+                    • Ext. 8080
+                </span>
                 <hr />
             </div>
             <div className="button-container">

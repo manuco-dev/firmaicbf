@@ -1,5 +1,5 @@
 import { Button } from 'primereact/button';
-import  { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Plantilla2 = () => {
     const contentRef = useRef(null);
@@ -20,13 +20,11 @@ const Plantilla2 = () => {
         }
     };
 
-    return ( 
+    return (
         <>
             <h1 className='container'>Configuración de Perfil Windows 10</h1>
             <div className="container" ref={contentRef}>
-                <span>Se ha validado su solicitud para Configuración de Perfil Windows 10, se informa
-                    que se ha realizado
-                    las siguientes actividades para dar solución a su requerimiento: </span>
+                <span>Se ha validado su solicitud relacionada con Configuración de Perfil Windows 10. En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
                 <br />
                 <br />
                 <p>1. Se realiza instalación de sistema operativo Windows 10.</p>
@@ -45,9 +43,14 @@ const Plantilla2 = () => {
                 <br />
                 <p>8. Se procede con el cierre del ticket a satisfacción.</p>
                 <br />
-                <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que 
-                    queda operativo.</span>
-                <hr />
+                <span>
+                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido<br /><br />
+                    Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:<br />
+                    • Canal de autoservicio https://mis.icbf.gov.co<br />
+                    • Correo: mis@icbf.gov.co<br />
+                    • MISI - Chatbot Teams<br />
+                    • Ext. 8080
+                </span>
             </div>
             <div className="button-container">
                 <Button className='btn btn-primary' onClick={handleCopy}>Copiar Solución</Button>

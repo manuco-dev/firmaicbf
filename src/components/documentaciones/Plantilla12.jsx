@@ -20,13 +20,11 @@ const Plantilla12 = () => {
         }
     };
 
-    return ( 
+    return (
         <>
             <h1 className='container'>Plantilla Default Requerimientos</h1>
             <div className="container" ref={contentRef}>
-                <span>Se ha validado su solicitud para "  ", se informa
-                    que se ha realizado
-                    las siguientes actividades para dar solución a su requerimiento: </span>
+                <span>Se ha validado su solicitud relacionada con "  ". En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
                 <br />
                 <br />
                 <p>1.  </p>
@@ -36,8 +34,14 @@ const Plantilla12 = () => {
                 <p>3.  </p>
                 <br />
                 <br />
-                <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que 
-                    queda operativo.</span>
+                <span>
+                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido<br /><br />
+                    Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:<br />
+                    • Canal de autoservicio https://mis.icbf.gov.co<br />
+                    • Correo: mis@icbf.gov.co<br />
+                    • MISI - Chatbot Teams<br />
+                    • Ext. 8080
+                </span>
                 <hr />
             </div>
             <div className="button-container">

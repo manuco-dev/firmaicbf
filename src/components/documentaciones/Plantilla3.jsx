@@ -1,4 +1,4 @@
-import  { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 const Plantilla3 = () => {
     const contentRef = useRef(null);
@@ -19,13 +19,11 @@ const Plantilla3 = () => {
         }
     };
 
-    return ( 
+    return (
         <>
             <h1 className='container'>Configuración de Impresora</h1>
             <div className="container" ref={contentRef}>
-                <span>Se ha validado su solicitud para Configuración de Impresora, se informa
-                    que se ha realizado
-                    las siguientes actividades para dar solución a su requerimiento: </span>
+                <span>Se ha validado su solicitud relacionada con Configuración de Impresora. En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
                 <br />
                 <br />
                 <p>1. Se descarga la última versión del controlador de la impresora.</p>
@@ -37,12 +35,18 @@ const Plantilla3 = () => {
                 <p>4. Se procede a cierre de la solicitud.</p>
                 <br />
                 <br />
-                <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que 
-                    queda operativo.</span>
+                <span>
+                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido<br /><br />
+                    Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:<br />
+                    • Canal de autoservicio https://mis.icbf.gov.co<br />
+                    • Correo: mis@icbf.gov.co<br />
+                    • MISI - Chatbot Teams<br />
+                    • Ext. 8080
+                </span>
                 <hr />
             </div>
             <div className="button-container">
-                <button  onClick={handleCopy}>Copiar Solución</button>
+                <button onClick={handleCopy}>Copiar Solución</button>
                 {copySuccess && <div className="container-copy">Contenido copiado al portapapeles</div>}
             </div>
         </>

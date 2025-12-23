@@ -20,13 +20,11 @@ const Plantilla10 = () => {
         }
     };
 
-    return ( 
+    return (
         <>
             <h1 className='container'>Instalación de PDF Gear</h1>
             <div className="container" ref={contentRef}>
-                <span>Se ha validado su solicitud para Instalación de PDF Gear, se informa
-                    que se ha realizado
-                    las siguientes actividades para dar solución a su requerimiento: </span>
+                <span>Se ha validado su solicitud relacionada con Instalación de PDF Gear. En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
                 <br />
                 <br />
                 <p>1. Se toma el control del equipo.</p>
@@ -37,8 +35,14 @@ const Plantilla10 = () => {
                 <br />
                 <p>5. Se procede al cierre del caso.</p>
                 <br />
-                <span>Una vez ejecutadas se procedió a realizar pruebas de funcionalidad evidenciando que 
-                    queda operativo.</span>
+                <span>
+                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido<br /><br />
+                    Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:<br />
+                    • Canal de autoservicio https://mis.icbf.gov.co<br />
+                    • Correo: mis@icbf.gov.co<br />
+                    • MISI - Chatbot Teams<br />
+                    • Ext. 8080
+                </span>
                 <hr />
             </div>
             <div className="button-container">
