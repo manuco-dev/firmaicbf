@@ -14,9 +14,11 @@ const Header = () => {
     logout();
     navigate('/login');
   };
-
   return (
     <>
+      <div className="header-main-title">
+        <h1>MIS - IA</h1>
+      </div>
       <header className="barra">
         <div className="contenedor">
           <div className="contenido-barra">

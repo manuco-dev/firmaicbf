@@ -59,3 +59,20 @@
   animation: parpadeo 3s infinite;
   /* Parpadeo continuo */
 }
+
+.header-main-title {
+  background: linear-gradient(90deg, #1a237e 0%, #0d47a1 100%);
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-main-title h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
