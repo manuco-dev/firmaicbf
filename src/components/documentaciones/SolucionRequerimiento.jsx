@@ -83,7 +83,8 @@ const SolucionRequerimiento = () => {
 
         setLoadingAI(index);
         try {
-            const response = await axios.post('http://localhost:4000/api/ai/formalize', {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+            const response = await axios.post(`${backendUrl}/api/ai/formalize`, {
                 text: textToImprove
             });
 

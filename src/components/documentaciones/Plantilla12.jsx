@@ -24,7 +24,7 @@ const Plantilla12 = () => {
         <>
             <h1 className='container'>Plantilla Default Requerimientos</h1>
             <div className="container" ref={contentRef}>
-                <span>Se ha validado su solicitud relacionada con "  ". En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
+                <span>Se ha validado su solicitud relacionada con [Requerimiento]. En atención a la misma, se realizaron las siguientes actividades con el fin de dar solución al requerimiento: </span>
                 <br />
                 <br />
                 <p>1.  </p>

@@ -38,7 +38,7 @@ const SolucionIncidente = () => {
     <br><br>
     ${soluciones.map(sol => sol ? `<p>${sol}</p><br>` : '').join('')}
     <span>Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido</span><br><br>
-    <span>Le recordamos Sr/a  Usuario que puede radicar sus solicitudes a través de:</span><br>
+    <span>Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:</span><br>
     <span>• Canal de autoservicio https://mis.icbf.gov.co</span><br>
     <span>• Correo: mis@icbf.gov.co</span><br>
     <span>• MISI - Chatbot Teams</span><br>
