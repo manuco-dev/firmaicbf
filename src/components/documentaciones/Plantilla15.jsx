@@ -32,12 +32,7 @@ const Plantilla15 = () => {
                 <br />
                 <br />
                 <span>
-                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido<br /><br />
-                    Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:<br />
-                    • Canal de autoservicio https://mis.icbf.gov.co<br />
-                    • Correo: mis@icbf.gov.co<br />
-                    • MISI - Chatbot Teams<br />
-                    • Ext. 8080
+                    Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido
                 </span>
                 <hr />
             </div>

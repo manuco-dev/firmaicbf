@@ -38,11 +38,7 @@ const SolucionIncidente = () => {
     <br><br>
     ${soluciones.map(sol => sol ? `<p>${sol}</p><br>` : '').join('')}
     <span>Tras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido</span><br><br>
-    <span>Le recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:</span><br>
-    <span>• Canal de autoservicio https://mis.icbf.gov.co</span><br>
-    <span>• Correo: mis@icbf.gov.co</span><br>
-    <span>• MISI - Chatbot Teams</span><br>
-    <span>• Ext. 8080</span>
+
 </body>
 </html>`;
         return html;
@@ -50,7 +46,7 @@ const SolucionIncidente = () => {
 
     const generarTextoPlano = () => {
         const actividadesTexto = soluciones.filter(s => s.trim() !== '').map(s => `- ${s}`).join('\n');
-        return `Se ha validado su solicitud relacionada con el incidente reportado. En atención a la misma, se identificó que la causa de la falla es por ${causa}. (Ticket: ${ticket}). Se realizaron las siguientes actividades con el fin de dar solución al incidente:\n\n${actividadesTexto}\n\nTras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido\n\nLe recordamos Sr/a Usuario que puede radicar sus solicitudes a través de:\n• Canal de autoservicio https://mis.icbf.gov.co\n• Correo: mis@icbf.gov.co\n• MISI - Chatbot Teams\n• Ext. 8080`;
+        return `Se ha validado su solicitud relacionada con el incidente reportado. En atención a la misma, se identificó que la causa de la falla es por ${causa}. (Ticket: ${ticket}). Se realizaron las siguientes actividades con el fin de dar solución al incidente:\n\n${actividadesTexto}\n\nTras la ejecución de estas acciones, se llevaron a cabo pruebas de funcionalidad, confirmando que el sistema ha quedado operativo conforme a lo requerido`;
     };
 
     const [loadingAI, setLoadingAI] = useState(null); // Index of the input being improved
