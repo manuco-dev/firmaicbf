@@ -144,8 +144,7 @@ const SolucionRequerimiento = () => {
                     <div className="p-message p-message-info" style={{ padding: '10px', borderRadius: '5px', backgroundColor: '#E3F2FD' }}>
                         <span className="p-message-icon pi pi-info-circle" style={{ marginRight: '8px' }}></span>
                         <span>
-                            💡 <strong>Modo Invitado:</strong> Puedes generar soluciones libremente.
-                            <a href="/login" style={{ marginLeft: '5px', color: '#1976D2', textDecoration: 'underline' }}>Inicia sesión</a> para guardar tu historial.
+                            💡 <strong>Aviso:</strong> Puedes generar soluciones libremente.
                         </span>
                     </div>
                 </div>

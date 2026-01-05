@@ -12,8 +12,9 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
+
   return (
     <>
       <div className="header-main-title">
@@ -23,9 +24,7 @@ const Header = () => {
         <div className="contenedor">
           <div className="contenido-barra">
             <DropdownMenu />
-            <Link to="/firma-corp">
-              <Button variant="contained" color="primary" size="small">Firma Corporativa</Button>
-            </Link>
+
             <Link to="/solucion-requerimiento">
               <Button variant="contained" color="secondary" size="small">Solución Req</Button>
             </Link>
@@ -33,9 +32,6 @@ const Header = () => {
               <Button variant="contained" color="error" size="small">Solución Inc</Button>
             </Link>
 
-            <Link to="/comprimir">
-              <Button variant="contained" color="primary" size="small">Comprimir Archivos</Button>
-            </Link>
             <Link to="/feedback">
               <Button variant="contained" color="primary" size="small">Comentarios</Button>
             </Link>
@@ -49,9 +45,9 @@ const Header = () => {
               </Link>
             )}
 
-            {/* User Section */}
+            {/* User Section (Only shows if logged in by some other means, or just logout) */}
             <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              {isAuthenticated ? (
+              {isAuthenticated && (
                 <>
                   <span style={{ fontSize: '14px', color: '#333' }}>
                     👤 {user?.name}
@@ -66,12 +62,6 @@ const Header = () => {
                     Cerrar Sesión
                   </Button>
                 </>
-              ) : (
-                <Link to="/login">
-                  <Button variant="contained" color="success" size="small">
-                    Iniciar Sesión
-                  </Button>
-                </Link>
               )}
             </div>
           </div>

@@ -26,25 +26,14 @@ import Plantilla14 from './components/documentaciones/Plantilla14';
 import Plantilla15 from './components/documentaciones/Plantilla15';
 
 
-
-
-
-
-import FirmaInput from './components/firma/FirmaInput';
-
 import FeedBack from './components/documentaciones/Feedback';
 
 import Plantilla16 from './components/documentaciones/Plantilla16';
 import SolucionRequerimiento from './components/documentaciones/SolucionRequerimiento';
 import SolucionIncidente from './components/documentaciones/SolucionIncidente';
-import UploadToCloudinary from './components/Cloudinary';
-import Auth from './components/auth/Auth';
 import Historial from './components/historial/Historial';
 
 import { AuthProvider } from './context/AuthContext';
-
-
-
 
 
 const App = () => {
@@ -54,8 +43,7 @@ const App = () => {
         <Header />
         <PiePag />
         <Routes>
-          <Route path="/login" element={<Auth />} />
-          <Route path="/firma-corp" element={<FirmaInput />} />
+          <Route path="/" element={<SolucionRequerimiento />} />
           <Route path="/plantilla1" element={< Plantilla1 />} />
           <Route path="/plantilla2" element={< Plantilla2 />} />
           <Route path="/plantilla3" element={< Plantilla3 />} />
@@ -76,7 +64,6 @@ const App = () => {
           <Route path="/solucion-requerimiento" element={<SolucionRequerimiento />} />
           <Route path="/solucion-incidente" element={<SolucionIncidente />} />
           <Route path="/historial" element={<Historial />} />
-          <Route path="/comprimir" element={<UploadToCloudinary />} />
         </Routes>
       </Router>
     </AuthProvider>
