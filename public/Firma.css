@@ -1,4 +1,10 @@
 /* App.css */
+body {
+  background-color: #FFFDF7;
+  /* Fondo cálido muy claro */
+  color: #333;
+}
+
 .firma-container {
   display: flex;
   flex-direction: column;
@@ -67,15 +73,23 @@ select {
 
 .btn {
   padding: 8px 15px;
-  background-color: #007bff;
+  background: linear-gradient(135deg, #FFB300 0%, #E65100 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   width: auto;
-  /* Not 50%, letting it fit content */
   min-width: 120px;
   font-size: 0.9em;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(230, 81, 0, 0.2);
+  filter: brightness(1.1);
 }
 
 .button-container {

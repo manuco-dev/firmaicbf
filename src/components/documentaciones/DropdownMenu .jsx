@@ -20,7 +20,7 @@ const DropdownMenu = () => {
         aria-haspopup="true"
         onClick={handleClick}
         variant="contained"
-        color="primary"
+        className="btn-header btn-dropdown-custom"
         size="small"
       >
         Plantillas de Solución
@@ -33,60 +33,60 @@ const DropdownMenu = () => {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} component={Link} to="/plantilla12">
-        Plantilla Default Requerimientos
+          Plantilla Default Requerimientos
         </MenuItem>
 
         <MenuItem onClick={handleClose} component={Link} to="/plantilla13">
-        Configuración de Aplicativo SIM
+          Configuración de Aplicativo SIM
         </MenuItem>
 
         <MenuItem onClick={handleClose} component={Link} to="/plantilla1">
           Alistamiento de VideoConferencia
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/plantilla2">
-        Configuración de Perfil
+          Configuración de Perfil
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/plantilla16">
-        Configuración de Perfil Windows 11
-        </MenuItem>
-        
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla3">
-        Configuración de Impresora
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla4">
-        Atasco de Papel
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla5">
-        Actualización de Firma
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla6">
-        Salud Informatica
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla7">
-        Equipo Fuera de Dominio
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla8">
-        Configuración de SIIF Nación
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla9">
-        Configuración de red Wifi
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla10">
-        Instalación de PDFGEAR
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla11">
-        Instalación de SEVEN
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla14">
-        Configuración e Instalación de CamerCloud
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} to="/plantilla15">
-        Actualización de Firma
+          Configuración de Perfil Windows 11
         </MenuItem>
 
-        
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla3">
+          Configuración de Impresora
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla4">
+          Atasco de Papel
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla5">
+          Actualización de Firma
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla6">
+          Salud Informatica
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla7">
+          Equipo Fuera de Dominio
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla8">
+          Configuración de SIIF Nación
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla9">
+          Configuración de red Wifi
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla10">
+          Instalación de PDFGEAR
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla11">
+          Instalación de SEVEN
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla14">
+          Configuración e Instalación de CamerCloud
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/plantilla15">
+          Actualización de Firma
+        </MenuItem>
+
+
       </Menu>
-      
+
     </div>
   );
 };

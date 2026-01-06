@@ -29,14 +29,14 @@ const Header = () => {
             <DropdownMenu />
 
             <Link to="/solucion-requerimiento">
-              <Button variant="contained" color="secondary" size="small">Solución Req</Button>
+              <Button variant="contained" className="btn-header btn-orange-deep" size="small">Solución Req</Button>
             </Link>
             <Link to="/solucion-incidente">
-              <Button variant="contained" color="error" size="small">Solución Inc</Button>
+              <Button variant="contained" className="btn-header btn-orange-light" size="small">Solución Inc</Button>
             </Link>
 
             <Link to="/feedback">
-              <Button variant="contained" color="primary" size="small">Comentarios</Button>
+              <Button variant="contained" className="btn-header btn-amber" size="small">Comentarios</Button>
             </Link>
 
             {/* Premium Feature - Historial */}
