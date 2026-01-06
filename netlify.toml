@@ -22,7 +22,7 @@
 
     # 3. Content Security Policy (Vulnerability: Missing CSP)
     # Optimized for React + Google Fonts + Bootstrap CDN
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https://res.cloudinary.com; connect-src 'self' https://*.icbf.gov.co http://localhost:4000 https://cdn.jsdelivr.net; frame-ancestors 'none'; upgrade-insecure-requests;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https://res.cloudinary.com; connect-src 'self' https://*.icbf.gov.co http://localhost:4000 https://cdn.jsdelivr.net https://backend-firmaicbf.vercel.app; frame-ancestors 'none'; upgrade-insecure-requests;"
 
     # 4. Minimize Information Disclosure (Note: Netlify controls the 'Server' header, but this header adds extra privacy)
     Referrer-Policy = "strict-origin-when-cross-origin"
