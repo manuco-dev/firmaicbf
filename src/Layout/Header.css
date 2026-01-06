@@ -66,6 +66,8 @@
   padding: 15px 0;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* Para posicionar el icono absolutamente */
 }
 
 .header-main-title h1 {
@@ -75,4 +77,30 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-icon-container {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header-page-icon {
+  width: 45px;
+  height: 45px;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.header-page-icon:hover {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 600px) {
+  .header-icon-container {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+  }
 }

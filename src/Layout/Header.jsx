@@ -19,6 +19,9 @@ const Header = () => {
     <>
       <div className="header-main-title">
         <h1>MIS - IA</h1>
+        <div className="header-icon-container">
+          <img src="/favicon.svg" alt="Logo" className="header-page-icon" />
+        </div>
       </div>
       <header className="barra">
         <div className="contenedor">

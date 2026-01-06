@@ -1,0 +1,12 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gear 2 (Lower Left) - Deep Orange -->
+  <g transform="translate(35, 65)">
+    <path fill="#E65100" d="M0 -30l3 5a20 20 0 0 1 12 0l3 -5 6 3-3 5a20 20 0 0 1 8 8l5 -3 3 6-5 3a20 20 0 0 1 0 12l5 3-3 6-5-3a20 20 0 0 1 -8 8l3 5-6 3-3-5a20 20 0 0 1 -12 0l-3 5-6 -3 3 -5a20 20 0 0 1 -8 -8l-5 3-3 -6 5 -3a20 20 0 0 1 0 -12l-5 -3 3 -6 5 3a20 20 0 0 1 8 -8l-3 -5z"/>
+    <circle cx="0" cy="0" r="10" fill="white"/>
+  </g>
+  <!-- Gear 1 (Upper Right) - Orange -->
+  <g transform="translate(65, 35) scale(0.75)">
+    <path fill="#FFA000" d="M0 -30l3 5a20 20 0 0 1 12 0l3 -5 6 3-3 5a20 20 0 0 1 8 8l5 -3 3 6-5 3a20 20 0 0 1 0 12l5 3-3 6-5-3a20 20 0 0 1 -8 8l3 5-6 3-3-5a20 20 0 0 1 -12 0l-3 5-6 -3 3 -5a20 20 0 0 1 -8 -8l-5 3-3 -6 5 -3a20 20 0 0 1 0 -12l-5 -3 3 -6 5 3a20 20 0 0 1 8 -8l-3 -5z"/>
+    <circle cx="0" cy="0" r="10" fill="white"/>
+  </g>
+</svg>
