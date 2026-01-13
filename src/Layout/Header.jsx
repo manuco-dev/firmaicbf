@@ -39,6 +39,10 @@ const Header = () => {
               <Button variant="contained" className="btn-header btn-amber" size="small">Comentarios</Button>
             </Link>
 
+            <Link to="/firma">
+              <Button variant="contained" className="btn-header btn-blue" size="small">Firma</Button>
+            </Link>
+
             {/* Premium Feature - Historial */}
             {isAuthenticated && user?.isPremium && (
               <Link to="/historial">

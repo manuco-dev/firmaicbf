@@ -32,6 +32,7 @@ import Plantilla16 from './components/documentaciones/Plantilla16';
 import SolucionRequerimiento from './components/documentaciones/SolucionRequerimiento';
 import SolucionIncidente from './components/documentaciones/SolucionIncidente';
 import Historial from './components/historial/Historial';
+import FirmaInput from './components/firma/FirmaInput';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -64,6 +65,7 @@ const App = () => {
           <Route path="/solucion-requerimiento" element={<SolucionRequerimiento />} />
           <Route path="/solucion-incidente" element={<SolucionIncidente />} />
           <Route path="/historial" element={<Historial />} />
+          <Route path="/firma" element={<FirmaInput />} />
         </Routes>
       </Router>
     </AuthProvider>

@@ -126,6 +126,11 @@
   color: #333 !important;
 }
 
+.btn-blue {
+  background: linear-gradient(135deg, #0288D1 0%, #01579B 100%) !important;
+  color: white !important;
+}
+
 .btn-dropdown-custom {
   background-color: #FFF !important;
   color: #E65100 !important;

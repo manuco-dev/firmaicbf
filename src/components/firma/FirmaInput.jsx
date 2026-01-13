@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 import { FloatLabel } from 'primereact/floatlabel';
+import { Card } from 'primereact/card';
+import { Divider } from 'primereact/divider';
 
-import PiePag from '../../Layout/PiePag';
 import Firma from './Firma';
 
 const FirmaInput = () => {
@@ -11,15 +12,14 @@ const FirmaInput = () => {
     nombre: '',
     puesto: '',
     grupo: '',
-    grupoManual: '', // Campo adicional para grupo personalizado
+    grupoManual: '',
     email: '',
     direccion: '',
-    direccionManual: '', // Campo adicional para dirección personalizada
-    telefono: ''
+    direccionManual: '',
+    telefono: '' // Mantenemos en el estado por si el componente Firma lo usa internamente el prop, pero quitamos el input
   });
 
   const grupos = [
-    'Otro', // Opción para grupo manual
     'Grupo Interno de Trabajo de Prevención',
     'Grupo Interno de Protección Especial y Autoridades Administrativas',
     'Grupo Interno de Responsabilidad Penal',
@@ -33,11 +33,11 @@ const FirmaInput = () => {
     'Grupo Interno de Trabajo Administrativo y Talento Humano',
     'Grupo Interno de Trabajo Financiero',
     'Grupo Interno de Trabajo de Recaudo',
-    'Grupo Interno de Trabajo de Gestión de Apoyo'
+    'Grupo Interno de Trabajo de Gestión de Apoyo',
+    'Otro'
   ];
 
   const direcciones = [
-    'Otra', // Opción para dirección manual
     'Barrio la Matuna, Edificio Concasa Piso 16',
     'Barrio Torices Bogotá Cra. 43 #14a-34',
     'Barrio Santa Lucia, Calle 31 Mz G Lote 15',
@@ -48,6 +48,7 @@ const FirmaInput = () => {
     'Calle 11 Libertador # 8 - 35 Barrio La Sabana, Simití - Bolívar',
     'Turbaco- Urb La Granja Cra 15 #28-284',
     'Carrera 17 # 5 - 191 Barrio Torices Sector San Pedro, Cartagena - Bolívar',
+    'Otra'
   ];
 
   const handleChange = (e) => {
@@ -61,7 +62,7 @@ const FirmaInput = () => {
     setFormData({
       ...formData,
       direccion: e.value,
-      direccionManual: e.value === 'Otra' ? '' : '' // Limpia el campo si se selecciona otra opción
+      direccionManual: e.value === 'Otra' ? formData.direccionManual : ''
     });
   };
 
@@ -69,144 +70,140 @@ const FirmaInput = () => {
     setFormData({
       ...formData,
       grupo: e.value,
-      grupoManual: e.value === 'Otro' ? '' : '' // Limpia el campo si se selecciona otra opción
-    });
-  };
-
-  const handleDireccionManualChange = (e) => {
-    setFormData({
-      ...formData,
-      direccionManual: e.target.value, // Cambia el valor de direccionManual y no afecta direccion
-    });
-  };
-
-  const handleGrupoManualChange = (e) => {
-    setFormData({
-      ...formData,
-      grupoManual: e.target.value, // Cambia el valor de grupoManual y no afecta grupo
+      grupoManual: e.value === 'Otro' ? formData.grupoManual : ''
     });
   };
 
   return (
-    <>
-      <div className="App">
-        <form>
-          <div className="form-group" style={{ marginBottom: '30px' }}>
-            <FloatLabel>
-              <InputText
-                type="text"
-                className="input-field"
-                name="nombre"
-                onChange={handleChange}
-              />
-              <label htmlFor="nombre">Nombres y Apellidos</label>
-            </FloatLabel>
-          </div>
-          <div className="form-group" style={{ marginBottom: '30px' }}>
-            <FloatLabel>
-              <InputText
-                type="text"
-                className="input-field"
-                name="puesto"
-                onChange={handleChange}
-              />
-              <label htmlFor="puesto">Cargo planta o Contratista</label>
-            </FloatLabel>
-          </div>
-          <div className="form-group" style={{ marginBottom: '30px' }}>
-            <Dropdown
-              name="grupo"
-              className="input-field"
-              placeholder="Selecciona un grupo"
-              value={formData.grupo}
-              options={grupos.map((grupo) => ({ label: grupo, value: grupo }))}
-              onChange={handleGrupoSelectChange}
-              display="chip"
-            />
-          </div>
+    <div className="firma-page-container">
+      <div className="firma-grid">
+        {/* LADO IZQUIERDO: FORMULARIO */}
+        <div className="firma-form-card">
+          <h2 className="form-title">
+            <i className="pi pi-id-card" style={{ fontSize: '1.5rem' }}></i>
+            Configurador de Firma
+          </h2>
+          <Divider />
 
-          {/* Campo de grupo manual que aparece si se selecciona "Otro" */}
-          {formData.grupo === 'Otro' && (
-            <div className="form-group" style={{ marginBottom: '30px' }}>
+          <form className="p-fluid">
+            <div className="input-container">
               <FloatLabel>
                 <InputText
-                  type="text"
-                  className="input-field"
-                  name="grupoManual"
-                  value={formData.grupoManual}
-                  onChange={handleGrupoManualChange}
-                  placeholder="Escriba el grupo"
+                  id="nombre"
+                  name="nombre"
+                  value={formData.nombre}
+                  onChange={handleChange}
+                  className="p-inputtext-sm"
                 />
-                <label htmlFor="grupoManual">Escriba el grupo</label>
+                <label htmlFor="nombre">Nombres y Apellidos</label>
               </FloatLabel>
             </div>
-          )}
-          <div className="form-group" style={{ marginBottom: '30px' }}>
-            <FloatLabel>
-              <InputText
-                type="email"
-                className="input-field"
-                name="email"
-                onChange={handleChange}
-              />
-              <label htmlFor="email">ICBF Sede Regional XXXXXXXXX</label>
-            </FloatLabel>
-          </div>
 
-          <div className="form-group" style={{ marginBottom: '30px' }}>
-            <Dropdown
-              name="direccion"
-              className="input-field"
-              placeholder="Selecciona una dirección"
-              value={formData.direccion}
-              options={direcciones.map((direccion) => ({ label: direccion, value: direccion }))}
-              onChange={handleSelectChange}
-              display="chip"
-            />
-          </div>
-
-          {/* Campo de dirección manual que aparece si se selecciona "Otra" */}
-          {formData.direccion === 'Otra' && (
-            <div className="form-group" style={{ marginBottom: '30px' }}>
+            <div className="input-container">
               <FloatLabel>
                 <InputText
-                  type="text"
-                  className="input-field"
-                  name="direccionManual"
-                  value={formData.direccionManual}
-                  onChange={handleDireccionManualChange} // Cambia el valor de direccionManual y sincroniza con direccion
-                  placeholder="Escriba la dirección"
+                  id="puesto"
+                  name="puesto"
+                  value={formData.puesto}
+                  onChange={handleChange}
+                  className="p-inputtext-sm"
                 />
-                <label htmlFor="direccionManual">Escriba la dirección</label>
+                <label htmlFor="puesto">Cargo planta o Contratista</label>
               </FloatLabel>
             </div>
-          )}
 
-          <div className="form-group" style={{ marginBottom: '30px' }}>
-            <FloatLabel>
-              <InputText
-                type="text"
-                className="input-field"
-                name="telefono"
-                placeholder="Teléfono si tiene"
-                onChange={handleChange}
+            <div className="input-container">
+              <label htmlFor="grupo" className="p-d-block" style={{ fontSize: '0.8rem', color: '#666' }}>Grupo de Trabajo</label>
+              <Dropdown
+                id="grupo"
+                name="grupo"
+                value={formData.grupo}
+                options={grupos.map((g) => ({ label: g, value: g }))}
+                onChange={handleGrupoSelectChange}
+                placeholder="Selecciona un grupo"
+                filter
+                className="p-inputtext-sm"
               />
-              <label htmlFor="telefono">Teléfono si tiene</label>
-            </FloatLabel>
+            </div>
+
+            {formData.grupo === 'Otro' && (
+              <div className="input-container animate__animated animate__fadeIn">
+                <FloatLabel>
+                  <InputText
+                    id="grupoManual"
+                    name="grupoManual"
+                    value={formData.grupoManual}
+                    onChange={(e) => setFormData({ ...formData, grupoManual: e.target.value })}
+                    placeholder="Escriba el grupo"
+                  />
+                  <label htmlFor="grupoManual">Escriba el grupo personalizado</label>
+                </FloatLabel>
+              </div>
+            )}
+
+            <div className="input-container">
+              <FloatLabel>
+                <InputText
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="p-inputtext-sm"
+                />
+                <label htmlFor="email">ICBF Sede Regional XXXXXXXXX</label>
+              </FloatLabel>
+            </div>
+
+            <div className="input-container">
+              <label htmlFor="direccion" className="p-d-block" style={{ fontSize: '0.8rem', color: '#666' }}>Direccion / Sede</label>
+              <Dropdown
+                id="direccion"
+                name="direccion"
+                value={formData.direccion}
+                options={direcciones.map((d) => ({ label: d, value: d }))}
+                onChange={handleSelectChange}
+                placeholder="Selecciona una ubicación"
+                filter
+                className="p-inputtext-sm"
+              />
+            </div>
+
+            {formData.direccion === 'Otra' && (
+              <div className="input-container animate__animated animate__fadeIn">
+                <FloatLabel>
+                  <InputText
+                    id="direccionManual"
+                    name="direccionManual"
+                    value={formData.direccionManual}
+                    onChange={(e) => setFormData({ ...formData, direccionManual: e.target.value })}
+                    placeholder="Escriba la dirección"
+                  />
+                  <label htmlFor="direccionManual">Escriba la dirección personalizada</label>
+                </FloatLabel>
+              </div>
+            )}
+          </form>
+        </div>
+
+        {/* LADO DERECHO: VISTA PREVIA */}
+        <div className="firma-preview-section">
+          <Card subTitle="Vista Previa de la Firma" className="p-shadow-3">
+            <Firma data={{
+              ...formData,
+              direccion: formData.direccion === 'Otra' ? formData.direccionManual : formData.direccion,
+              grupo: formData.grupo === 'Otro' ? formData.grupoManual : formData.grupo
+            }} />
+          </Card>
+
+          <div style={{ marginTop: '20px', padding: '15px', background: '#e3f2fd', borderRadius: '8px', borderLeft: '4px solid #2196f3' }}>
+            <p style={{ margin: 0, fontSize: '0.9rem', color: '#1565c0' }}>
+              <i className="pi pi-info-circle" style={{ marginRight: '10px' }}></i>
+              <strong>Nota:</strong> La imagen generada tendrá el tamaño estándar corporativo para Outlook y Gmail.
+            </p>
           </div>
-        </form>
-
-        {/* Componente Firma con los datos del formulario */}
-        <Firma data={{ 
-          ...formData, 
-          direccion: formData.direccionManual || formData.direccion,
-          grupo: formData.grupoManual || formData.grupo
-        }} />
-
-        {/* Pie de página */}
-        <PiePag />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

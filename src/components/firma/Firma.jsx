@@ -8,8 +8,19 @@ function Firma({ data }) {
   const firmaRef = useRef(null);
 
   const generarImagen = () => {
-    html2canvas(firmaRef.current).then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
+    html2canvas(firmaRef.current, {
+      scale: 3, // Mayor escala para máxima nitidez
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      logging: false,
+      onclone: (clonedDoc) => {
+        const clonedRef = clonedDoc.querySelector('.firma');
+        if (clonedRef) {
+          clonedRef.style.fontFamily = "'Nunito Sans', sans-serif";
+        }
+      }
+    }).then(canvas => {
+      const imgData = canvas.toDataURL('image/png', 1.0);
       const link = document.createElement('a');
       link.href = imgData;
       link.download = 'firma.png';
@@ -21,10 +32,10 @@ function Firma({ data }) {
     <>
       <div className='form-group'>
         <div ref={firmaRef} className="firma">
-          <img 
+          <img
             src="/icbf-logo.png" // Usa la ruta relativa desde la carpeta `public`
-            alt="ICBF Logo" 
-            className="firma-logo" 
+            alt="ICBF Logo"
+            className="firma-logo"
           />
           <div className="firma-info">
             <p><strong>{data.nombre}</strong></p>
@@ -38,7 +49,7 @@ function Firma({ data }) {
             <p className='clasificacion-info'>Clasificación de la información: <strong>CLASIFICADA</strong></p>
           </div>
         </div>
-        <Button label="Generar Firma PNG" icon="pi pi-check"onClick={generarImagen} ></Button>
+        <Button label="Generar Firma PNG" icon="pi pi-check" onClick={generarImagen} ></Button>
       </div>
     </>
   );
